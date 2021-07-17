@@ -1,11 +1,11 @@
 const TablesOrderRoute="ໜ້າຫລັກ";
-const OrderRoute="Order";
-const ClientsPageRoute="Clients";
-const AuthenticationPageRoute="Authentication";
+const OrderRoute="ສັ່ງອາຫານ";
+const FoodRoute="ຈັດການອາຫານ";
+const TableRoute="ຈັດການໂຕະ";
 
 List sideMenuItems=[
   TablesOrderRoute,
   OrderRoute,
-  ClientsPageRoute,
-  AuthenticationPageRoute
+  FoodRoute,
+  TableRoute
 ];

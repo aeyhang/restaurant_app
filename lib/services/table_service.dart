@@ -39,15 +39,11 @@ class TableService {
       data['tableFlag'] = table.tableFlag.toString();
       var response = await http.post(Uri.parse(addURL),
           body: data);
-      print(response.statusCode);
       if (response.statusCode == 200) {
-        print('success adding data');
-        print(response.body);
       }
       return 'success';
     } catch (e) {
-      print(e);
-      return 'error';
+      return e.toString();
     }
   }
   static Future<String> updateTable(TableData table) async {
@@ -62,15 +58,11 @@ class TableService {
       data['tableFlag'] = table.tableFlag.toString();
       var response = await http.post(Uri.parse(addURL),
           body: data);
-      print(response.statusCode);
       if (response.statusCode == 200) {
-        print('success adding data');
-        print(response.body);
       }
       return 'success';
     } catch (e) {
-      print(e);
-      return 'error';
+      return e.toString();
     }
   }
 }

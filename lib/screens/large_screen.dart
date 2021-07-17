@@ -12,14 +12,9 @@ class LargeScreen extends StatelessWidget {
           width: 300,
           child: SideMenu(),
         ),
-        Container(width: 2,color: dark,),
         Expanded(child: Container(
           child: localNavigator(),
         )),
-        Container(
-          color: dark,
-          width: 300,
-        ),
       ],
     );
   }

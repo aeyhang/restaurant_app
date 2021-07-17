@@ -24,10 +24,10 @@ class MenuController extends GetxController{
         return _customIcon(Icons.trending_up, itemName);
       case OrderRoute:
         return _customIcon(Icons.drive_eta, itemName);
-      case ClientsPageRoute:
-        return _customIcon(Icons.people_alt_outlined, itemName);
-      case AuthenticationPageRoute:
-        return _customIcon(Icons.exit_to_app, itemName);
+      case FoodRoute:
+        return _customIcon(Icons.settings, itemName);
+      case TableRoute:
+        return _customIcon(Icons.settings, itemName);
       default:
         return _customIcon(Icons.exit_to_app, itemName);
     }

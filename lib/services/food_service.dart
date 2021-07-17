@@ -11,8 +11,6 @@ class FoodService {
     try{
     const foodURL=url+'food_read.php';
     var response = await http.get(Uri.parse(foodURL));
-    // List<TableData> tables = [];
-    print(foodURL);
     if (response.statusCode == 200) {
       var jsonString = response.body;
       return foodFromJson(jsonString);
@@ -36,14 +34,10 @@ class FoodService {
       data['foodStatus'] = food.foodStatus.toString();
       var response = await http.post(Uri.parse(addURL),
           body: data);
-      print(response.statusCode);
       if (response.statusCode == 200) {
-        print('success adding data');
-        print(response.body);
       }
       return 'success';
     } catch (e) {
-      print(e);
       return 'error';
     }
   }
@@ -61,14 +55,10 @@ class FoodService {
       data['foodStatus'] = food.foodStatus.toString();
       var response = await http.post(Uri.parse(addURL),
           body: data);
-      print(response.statusCode);
       if (response.statusCode == 200) {
-        print('success adding data');
-        print(response.body);
       }
       return 'success';
     } catch (e) {
-      print(e);
       return 'error';
     }
   }

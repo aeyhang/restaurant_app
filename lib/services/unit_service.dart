@@ -11,8 +11,6 @@ class UnitService {
     try{
     const unitURL=url+'unit_read.php';
     var response = await http.get(Uri.parse(unitURL));
-    // List<TableData> tables = [];
-    print(unitURL);
     if (response.statusCode == 200) {
       var jsonString = response.body;
       return unitFromJson(jsonString);

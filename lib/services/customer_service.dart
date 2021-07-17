@@ -10,7 +10,6 @@ class CustomerService {
     try{
     const unitURL=url+'customer_read.php';
     var response = await http.get(Uri.parse(unitURL));
-    print(unitURL);
     if (response.statusCode == 200) {
       var jsonString = response.body;
       return customerFromJson(jsonString);

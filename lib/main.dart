@@ -1,15 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:restaurant_app/controllers/category_controller.dart';
+import 'package:restaurant_app/controllers/customer_controller.dart';
+import 'package:restaurant_app/controllers/food_controller.dart';
 import 'package:restaurant_app/controllers/navigation_controller.dart';
+import 'package:restaurant_app/controllers/sale_controller.dart';
+import 'package:restaurant_app/controllers/sale_detail_controller.dart';
 import 'package:restaurant_app/controllers/table_controller.dart';
-import 'package:restaurant_app/layout.dart';
+import 'package:restaurant_app/controllers/unit_controller.dart';
+import './layout.dart';
 
 import 'controllers/menu_controller.dart';
 
 void main() {
+  Get.put(FoodController());
   Get.put(MenuController());
   Get.put(TableController());
   Get.put(NavigationController());
+  Get.put(CategoryController());
+  Get.put(UnitController());
+  Get.put(CustomerController());
+  Get.put(SaleController());
+  Get.put(SaleDetailController());
   runApp(const MyApp());
 }
 
