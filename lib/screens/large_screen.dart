@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/constants/style.dart';
 import 'package:restaurant_app/helpers/local_navigator.dart';
 import 'package:restaurant_app/widgets/side_menu.dart';
 

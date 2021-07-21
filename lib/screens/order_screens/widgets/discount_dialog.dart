@@ -112,7 +112,7 @@ class DiscountDialog extends StatelessWidget {
       TextButton(
           onPressed: () {
             
-            Printing.directPrintPdf(printer: Printer(url: 'L80250 Series'), onLayout: (format)=>doc.save());
+            Printing.directPrintPdf(printer:const Printer(url: 'L80250 Series'), onLayout: (format)=>doc.save());
           },
           child: Text('Print')),
     ]);

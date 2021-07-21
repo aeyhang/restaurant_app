@@ -9,7 +9,7 @@ import 'package:restaurant_app/widgets/custom_text.dart';
 class TableDropdown extends StatelessWidget {
   final int tableID;
   final double width;
-  TableDropdown({this.tableID = 1, this.width = 70});
+  const TableDropdown({this.tableID = 1, this.width = 70});
   @override
   Widget build(BuildContext context) {
     return _buildTableDropDown(tableID, context);

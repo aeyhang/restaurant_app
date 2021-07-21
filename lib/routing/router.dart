@@ -8,11 +8,11 @@ import 'package:restaurant_app/screens/table_screens/tables_order_screen.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings){
     switch (settings.name) {
-      case TablesOrderRoute:
+      case tablesOrderRoute:
         return _getPageRoute(TablesOrderScreen());
-      case OrderRoute:
+      case orderRoute:
         return _getPageRoute(OrderScreen());
-      case FoodRoute:
+      case foodRoute:
         return _getPageRoute(FoodsListScreen());
       default:
         return _getPageRoute(TableListScreen());

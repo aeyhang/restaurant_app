@@ -22,7 +22,7 @@ showFoodDialog({bool isAddNew = false}) {
   Get.defaultDialog(
       barrierDismissible: true,
       title: isAddNew ? 'ເພີ່ມອາຫານ' : 'ແກ້ໄຂອາຫານ',
-      titleStyle: TextStyle(color: dark, fontSize: 25),
+      titleStyle:const TextStyle(color: dark, fontSize: 25),
       content: Container(
         padding: const EdgeInsets.all(20),
         width: double.infinity,
@@ -79,7 +79,7 @@ showFoodDialog({bool isAddNew = false}) {
                 ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(dark)),
-                  child: Text(
+                  child:const Text(
                     'ຍົກເລີກ',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -88,7 +88,7 @@ showFoodDialog({bool isAddNew = false}) {
                 ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(dark)),
-                  child: Text(
+                  child: const Text(
                     'ບັນທຶກ',
                     style: TextStyle(color: Colors.white),
                   ),

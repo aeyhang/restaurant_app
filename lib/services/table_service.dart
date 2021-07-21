@@ -1,5 +1,6 @@
 // import 'dart:convert';
-import 'dart:convert';
+// ignore_for_file: unused_import
+
 import 'dart:io';
 
 import 'package:http/http.dart' as http;
@@ -30,7 +31,7 @@ class TableService {
 
   static Future<String> postTable(TableData table) async {
     try {
-      final addURL = url + 'table_add.php';
+      const addURL = url + 'table_add.php';
   
       Map<String, String> data = {};
       data['tableName'] = table.tableName;
@@ -48,7 +49,7 @@ class TableService {
   }
   static Future<String> updateTable(TableData table) async {
     try {
-      final addURL = url + 'table_edit.php';
+      const addURL = url + 'table_edit.php';
   
       Map<String, String> data = {};
       data['id']=table.id.toString();

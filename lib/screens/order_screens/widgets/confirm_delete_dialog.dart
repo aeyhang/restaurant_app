@@ -27,7 +27,7 @@ class ConfirmDeleteDialog extends StatelessWidget {
                     Container(
                       child: Row(
                         children: [
-                          CustomText(
+                          const CustomText(
                             text: 'ທ່ານຕ້ອງການລຶບ  ',
                             size: 25,
                             color: light,

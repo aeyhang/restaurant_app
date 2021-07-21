@@ -23,7 +23,7 @@ Map<int, int> getDuplicationFoods(
   Map<int, int> map = {};
   for (var i = 0; i < list1.length; i++) {
     int counter = 0;
-    list2.forEach((e) {
+    list2.toList().forEach((e) {
       e.foodId == list1[i].foodId ? counter++ : counter;
     });
     map[list1[i].foodId] = counter;
@@ -78,7 +78,7 @@ double getSubTotalBySaleNumber(String saleNumber) {
         (s) => s.saleNumber == saleNumber,
       )
       .toList();
-  list.forEach((e) => subTotal += e.foodPrice);
+  list.toList().forEach((e) => subTotal += e.foodPrice);
   // for(var item in list){
   //   subTotal+=item.foodPrice;
   // }

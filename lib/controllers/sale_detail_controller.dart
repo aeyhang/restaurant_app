@@ -39,4 +39,18 @@ class SaleDetailController extends GetxController {
    fetchTempSaleDetails();
    return result;
  }
+ Future<String> deleteTempSaleBySaleNumber(String saleNumber)async{
+   final result=await SaleDetailService.deleteTempSaleDetails(saleNumber);
+   fetchTempSaleDetails();
+   return result;
+ }
+
+ //------------SaleDetails Table--------------
+
+ 
+ Future<String> addSaleDetail(SaleDetail saleDetail) async{
+   final result=await SaleDetailService.postSaleDetail(saleDetail);
+    fetchTempSaleDetails();
+   return result;
+ }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/constants/style.dart';
 import 'package:restaurant_app/controllers/controllers.dart';
+import 'package:restaurant_app/screens/table_screens/widgets/sale_of_the_day.dart';
 import 'package:restaurant_app/screens/table_screens/widgets/table_item.dart';
 import 'package:get/get.dart';
 
@@ -39,6 +40,7 @@ class TablesOrderScreen extends StatelessWidget {
         Container(
           color: dark,
           width: 350,
+          // child: SaleOfTheDay(),
         ),
       ],
     );

@@ -48,7 +48,7 @@ class SaleDetailService {
 
   static Future<String> postData(SaleDetail saleDetail) async {
     try {
-      final addURL = url + 'temp_sale_detail_add.php';
+      const addURL = url + 'temp_sale_detail_add.php';
 
       Map<String, String> data = {};
       data['saleNumber'] = saleDetail.saleNumber;
@@ -66,7 +66,7 @@ class SaleDetailService {
   }
   static Future<String> deleteData(int id)async{
     try {
-      final deleteURL = url + 'temp_sale_detail_delete.php';
+      const deleteURL = url + 'temp_sale_detail_delete_by_ID.php';
 
 
       var response = await http.post(Uri.parse(deleteURL),
@@ -78,29 +78,39 @@ class SaleDetailService {
       return 'error';
     }
   }
+  static Future<String> deleteTempSaleDetails(String saleNumber)async{
+    try {
+      const deleteURL = url + 'temp_sale_detail_delete_by_salenumber.php';
 
-  // static Future<String> updateFood(Food food) async {
-  //   try {
-  //     final addURL = url + 'food_edit.php';
 
-  //     Map<String, String> data = {};
-  //     data['id']=food.id.toString();
-  //     data['foodName'] = food.foodName;
-  //     data['unitID'] = food.unitId.toString();
-  //     data['catID'] = food.categoryId.toString();
-  //     data['foodPrice'] = food.foodPrice.toString();
-  //     data['foodStatus'] = food.foodStatus.toString();
-  //     var response = await http.post(Uri.parse(addURL),
-  //         body: data);
-  //     print(response.statusCode);
-  //     if (response.statusCode == 200) {
-  //       print('success adding data');
-  //       print(response.body);
-  //     }
-  //     return 'success';
-  //   } catch (e) {
-  //     print(e);
-  //     return 'error';
-  //   }
-  // }
+      var response = await http.post(Uri.parse(deleteURL),
+          body: {'saleNumber':saleNumber,});
+      if (response.statusCode == 200) {
+      }
+      return 'success';
+    } catch (e) {
+      return 'error';
+    }
+  }
+//--------------------------------SaleDetails Table----------------
+    static Future<String> postSaleDetail(SaleDetail saleDetail) async {
+    try {
+      const addURL = url + 'sale_detail_add.php';
+
+      Map<String, String> data = {};
+      data['saleNumber'] = saleDetail.saleNumber;
+      data['foodID'] = saleDetail.foodId.toString();
+      data['foodPrice'] = saleDetail.foodPrice.toString();
+      data['orderDateTime']=saleDetail.orderedDateTime.toString();
+      data['description'] = saleDetail.description;
+      var response = await http.post(Uri.parse(addURL),
+          body: data);
+      if (response.statusCode == 200) {
+      }
+      return 'success';
+    } catch (e) {
+      return 'error';
+    }
+  }
+
 }

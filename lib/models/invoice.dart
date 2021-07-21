@@ -6,8 +6,7 @@ class Invoice {
   final String tableName;
   final double subTotal;
   final double discount;
-  final double total;
-  final List<Food> foodItems;
+  final Map<int,int> foodItems;
 
   Invoice(
       {required this.saleNumber,
@@ -15,6 +14,5 @@ class Invoice {
       required this.tableName,
       required this.subTotal,
       required this.discount,
-      required this.total,
       required this.foodItems});
 }

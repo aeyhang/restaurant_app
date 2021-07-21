@@ -7,7 +7,7 @@ import 'package:restaurant_app/widgets/custom_text.dart';
 
 class TableListItem extends StatelessWidget {
   final TableData table;
-  TableListItem({required this.table});
+  const TableListItem({required this.table});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -44,7 +44,7 @@ class TableListItem extends StatelessWidget {
                   tableController.table.value=table;
                   showTableDialog();
                 },
-                icon: Icon(Icons.edit),
+                icon: const Icon(Icons.edit),
                 iconSize: 22,
                 color: dark,
               ),

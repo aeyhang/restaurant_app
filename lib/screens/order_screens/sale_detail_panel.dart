@@ -2,17 +2,47 @@ import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:restaurant_app/constants/style.dart';
 import 'package:restaurant_app/controllers/controllers.dart';
+import 'package:restaurant_app/models/food.dart';
+import 'package:restaurant_app/models/invoice.dart';
 import 'package:restaurant_app/models/sale_detail.dart';
 import 'package:restaurant_app/printings/print_invoice.dart';
 import 'package:restaurant_app/printings/printing_sale_item.dart';
 import 'package:restaurant_app/screens/order_screens/food_items_operation.dart';
 import 'package:restaurant_app/screens/order_screens/widgets/confirm_delete_dialog.dart';
 import 'package:restaurant_app/screens/order_screens/widgets/discount_dialog.dart';
+import 'package:restaurant_app/screens/order_screens/widgets/move_sale_data.dart';
 import './sale_detial_sub_items.dart';
 import 'package:restaurant_app/widgets/custom_text.dart';
 import 'package:get/get.dart';
 
 class SaleDetailPanel extends StatelessWidget {
+  _printInvoice(){
+    final List<Food> foodItems=[];
+    final saleNumber=getSaleNumberByTableID();
+    final saleDetails = saleDetailController.tempSaleDetails
+                  .where((s) => s.saleNumber == saleNumber)
+                  .toList();
+    saleDetails.forEach((item) {
+      foodItems.add(foodController.foods.firstWhere((f) => f.id==item.foodId));
+     });
+     Map<int, SaleDetail> map = {};
+              for (var item in saleDetails) {
+                map[item.foodId] = item;
+              }
+              var filteredList = map.values.toList();
+              var saleMap =
+                  getDuplicationFoods(list1: filteredList, list2: saleDetails);
+    final invoice=Invoice(
+        saleNumber:saleNumber,
+   customerName:customerController.selectedCustomer.value.customerName,
+   tableName: tableController.table.value.tableName,
+    subTotal:getSubTotalBySaleNumber(
+                saleController.tempSale.value.saleNumber),
+    discount:saleController.tempSale.value.discount,
+    foodItems: saleMap
+    );
+    PrintInvoice.printInvoice(invoice);
+  }
   _buildItemCountAndFooodName(int itemCount, int foodID) {
     return Expanded(
       child: Container(
@@ -84,7 +114,7 @@ class SaleDetailPanel extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        CustomText(
+        const CustomText(
           text: 'ລວມ: ',
           color: Colors.white70,
           size: 22,
@@ -97,7 +127,7 @@ class SaleDetailPanel extends StatelessWidget {
             size: 22,
           ),
         ),
-        CustomText(
+        const CustomText(
           text: ' ກີບ',
           color: Colors.white70,
           size: 22,
@@ -110,7 +140,7 @@ class SaleDetailPanel extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        CustomText(
+        const CustomText(
           text: 'ຈຳນວນເງິນ: ',
           color: Colors.white70,
           size: 25,
@@ -122,7 +152,7 @@ class SaleDetailPanel extends StatelessWidget {
             size: 35,
           ),
         ),
-        CustomText(
+        const CustomText(
           text: ' ກີບ',
           color: Colors.white70,
           size: 22,
@@ -280,7 +310,7 @@ class SaleDetailPanel extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            CustomText(
+                            const CustomText(
                               text: 'ສ່ວນຫຼຸດ: ',
                               color: Colors.white70,
                               size: 18,
@@ -297,7 +327,7 @@ class SaleDetailPanel extends StatelessWidget {
                                     saleController.tempSale.value.saleNumber),
                               ),
                             ),
-                            CustomText(
+                            const CustomText(
                               text: ' ກີບ',
                               color: Colors.white70,
                               size: 22,
@@ -327,7 +357,7 @@ class SaleDetailPanel extends StatelessWidget {
             children: [
               Expanded(
                 child: InkWell(
-                  onTap: () => PrintInvoice.printInvoice(),
+                  onTap: () => _printInvoice(),
                   child: Container(
                     height: 50,
                     decoration: const BoxDecoration(
@@ -336,7 +366,7 @@ class SaleDetailPanel extends StatelessWidget {
                       ),
                       color: light,
                     ),
-                    child: Center(
+                    child: const Center(
                         child: CustomText(
                       text: 'ເຊັກບີນ',
                       size: 22,
@@ -351,7 +381,10 @@ class SaleDetailPanel extends StatelessWidget {
               ),
               Expanded(
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    MoveSaleData.moveData(getTempSaleByTableID());
+                    // _printInvoice();
+                  },
                   child: Container(
                     height: 50,
                     decoration: const BoxDecoration(
@@ -360,7 +393,7 @@ class SaleDetailPanel extends StatelessWidget {
                       ),
                       color: light,
                     ),
-                    child: Center(
+                    child: const Center(
                         child: CustomText(
                       text: 'ຮັບເງິນ',
                       size: 22,

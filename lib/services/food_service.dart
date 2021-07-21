@@ -24,7 +24,7 @@ class FoodService {
 
   static Future<String> postFood(Food food) async {
     try {
-      final addURL = url + 'food_add.php';
+      const addURL = url + 'food_add.php';
   
       Map<String, String> data = {};
       data['foodName'] = food.foodName;
@@ -44,7 +44,7 @@ class FoodService {
   
   static Future<String> updateFood(Food food) async {
     try {
-      final addURL = url + 'food_edit.php';
+      const addURL = url + 'food_edit.php';
   
       Map<String, String> data = {};
       data['id']=food.id.toString();

@@ -6,7 +6,7 @@ import 'package:restaurant_app/routing/routes.dart';
 
 class MenuController extends GetxController{
   static MenuController instance=Get.find();
-  var activeItem=TablesOrderRoute.obs;
+  var activeItem=tablesOrderRoute.obs;
   var hoverItem="".obs;
 
   changeActiveItemTo(String itemName){
@@ -20,13 +20,13 @@ class MenuController extends GetxController{
 
   Widget returnIconFor(String itemName){
     switch (itemName) {
-      case TablesOrderRoute:
+      case tablesOrderRoute:
         return _customIcon(Icons.trending_up, itemName);
-      case OrderRoute:
+      case orderRoute:
         return _customIcon(Icons.drive_eta, itemName);
-      case FoodRoute:
+      case foodRoute:
         return _customIcon(Icons.settings, itemName);
-      case TableRoute:
+      case tableRoute:
         return _customIcon(Icons.settings, itemName);
       default:
         return _customIcon(Icons.exit_to_app, itemName);

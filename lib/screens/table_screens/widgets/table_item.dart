@@ -68,8 +68,8 @@ class TableItem extends StatelessWidget {
                   onPressed: () {
                     tableController.table.value = table;
                     saleController.tempSale.value=getTempSaleByTableID();
-                    menuController.activeItem.value = OrderRoute;
-                    navigationController.navigateTo(OrderRoute);
+                    menuController.activeItem.value = orderRoute;
+                    navigationController.navigateTo(orderRoute);
                   },
                 ),
               ],

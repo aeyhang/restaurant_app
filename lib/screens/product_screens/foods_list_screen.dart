@@ -95,7 +95,7 @@ class FoodsListScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding:const EdgeInsets.all(20),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height - 200,
                   child: _buildFoodGridViewList(),

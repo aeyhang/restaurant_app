@@ -5,6 +5,6 @@ import 'package:restaurant_app/routing/routes.dart';
 
 Navigator localNavigator()=>Navigator(
   key: navigationController.navigationKey,
-  initialRoute: TablesOrderRoute,
+  initialRoute: tablesOrderRoute,
   onGenerateRoute: generateRoute,  
 );

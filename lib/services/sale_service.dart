@@ -88,7 +88,7 @@ class SaleService {
 
   static Future<String> postTempSale(Sale sale) async {
     try {
-      final addURL = url + 'temp_sale_add.php';
+      const addURL = url + 'temp_sale_add.php';
       Map<String, String> data = {};
       data['saleNumber'] = sale.saleNumber.toString();
       data['tableID'] = sale.tableId.toString();
@@ -107,7 +107,7 @@ class SaleService {
 
   static Future<String> updateTempSale(Sale sale) async {
     try {
-      final editURL = url + 'temp_sale_edit.php';
+      const editURL = url + 'temp_sale_edit.php';
 
      Map<String, String> data = {};
       data['saleNumber'] = sale.saleNumber.toString();
@@ -124,6 +124,80 @@ class SaleService {
       return 'success';
     } catch (e) {
       return e.toString();
+    }
+  }
+  static Future<String> deleteTempSale(String saleNumber) async {
+    try {
+      const editURL = url + 'temp_sale_delete.php';
+
+     Map<String, String> data = {};
+      // data['saleNumber'] = saleNumber;
+      var response = await http.post(Uri.parse(editURL),
+          body: {'saleNumber':saleNumber});
+      if (response.statusCode == 200) {
+      }
+      return 'success';
+    } catch (e) {
+      return e.toString();
+    }
+  }
+
+  //----------------------------------------------Sales Table---------------------------
+    static Future<String> postSale(Sale sale) async {
+    try {
+      const addURL = url + 'sale_add.php';
+      Map<String, String> data = {};
+      data['saleNumber'] = sale.saleNumber.toString();
+      data['saleDate']=sale.saleDate.toString();
+      data['tableID'] = sale.tableId.toString();
+      data['customerID'] = sale.customerId.toString();
+      data['subTotal'] = sale.subTotal.toString();
+      data['discount'] = sale.discount.toString();
+      data['total'] = sale.total.toString();
+      data['billStatus'] = sale.billStatus.toString();
+      var response = await http.post(Uri.parse(addURL), body: data);
+      if (response.statusCode == 200) {}
+      return 'success';
+    } catch (e) {
+      return 'error';
+    }
+  }
+   static Future<List<Sale>> getSales() async {
+    try {
+      const readURL = url + 'sale_read.php';
+      var response = await http.get(Uri.parse(readURL));
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+        return saleFromJson(jsonString);
+      } else {
+        return [
+          Sale(
+            saleNumber: '',
+            saleDate: DateTime.now(),
+            tableId: 0,
+            customerId: 0,
+            subTotal: 0.0,
+            discount: 0.0,
+            total: 0.0,
+            billStatus: '',
+            invoiceDateTime: DateTime.now(),
+          )
+        ];
+      }
+    } catch (e) {
+      return [
+        Sale(
+          saleNumber: '',
+          saleDate: DateTime.now(),
+          tableId: 0,
+          customerId: 0,
+          subTotal: 0.0,
+          discount: 0.0,
+          total: 0.0,
+          billStatus: '',
+          invoiceDateTime: DateTime.now(),
+        )
+      ];
     }
   }
 }

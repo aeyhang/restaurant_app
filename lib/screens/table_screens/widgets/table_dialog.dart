@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:restaurant_app/constants/style.dart';
 import 'package:restaurant_app/controllers/controllers.dart';
-import 'package:restaurant_app/models/food.dart';
 import 'package:restaurant_app/models/table_data.dart';
-import 'package:restaurant_app/screens/order_screens/food_items_operation.dart';
-import 'package:restaurant_app/widgets/custom_text.dart';
 
 showTableDialog({bool isAddNew = false}) {
   final _idController = TextEditingController();
@@ -24,7 +21,7 @@ showTableDialog({bool isAddNew = false}) {
   Get.defaultDialog(
       barrierDismissible: true,
       title: isAddNew ? 'ເພີ່ມຂໍ້ມູນໂຕະ' : 'ແກ້ໄຂຂໍ້ມູນໂຕະ',
-      titleStyle: TextStyle(color: dark, fontSize: 25),
+      titleStyle: const TextStyle(color: dark, fontSize: 25),
       content: Container(
         padding: const EdgeInsets.all(20),
         width: double.infinity,

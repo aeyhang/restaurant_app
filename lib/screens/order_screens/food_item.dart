@@ -32,7 +32,7 @@ class FoodItem extends StatelessWidget {
   //   }
   // }
 
-   _addSaleDetail(String saleNumber) {
+  _addSaleDetail(String saleNumber) {
     saleDetailController.addTempSaleDetail(SaleDetail(
         saleNumber: saleNumber,
         foodId: _food.id,
@@ -59,9 +59,9 @@ class FoodItem extends StatelessWidget {
   }
 
   _addTempSale(String saleNumber) {
-    var subTotal=_food.foodPrice;
-    var discount=0.0;
-    var total =subTotal-discount;
+    var subTotal = _food.foodPrice;
+    var discount = 0.0;
+    var total = subTotal - discount;
     var result = saleController.addTempSale(
       Sale(
         saleNumber: saleNumber,
@@ -103,7 +103,7 @@ class FoodItem extends StatelessWidget {
                   color: dark,
                   weight: FontWeight.bold,
                 ),
-                CustomText(
+                const CustomText(
                   text: ' ກີບ / ',
                   size: 18,
                   color: dark,
@@ -122,9 +122,11 @@ class FoodItem extends StatelessWidget {
             const SizedBox(
               height: 7,
             ),
-            Obx(()=> Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Obx(
+              () => Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  /*
                    TextButton(                  
                       style: TextButton.styleFrom(backgroundColor: dark),
                       child: Padding(
@@ -152,36 +154,49 @@ class FoodItem extends StatelessWidget {
                         Future.delayed(const Duration(milliseconds: 350),()=>foodController.isButtonEnable.value=true);
                         
                       }:null,
-                    ),TextButton(                  
-                      style: TextButton.styleFrom(backgroundColor: dark),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: CustomText(
-                          text: 'ກົດສັ່ງພ້ອມພິມ',
-                          color: Colors.white,
-                          size: 18,
-                        ),
-                      ),                    
-                      onPressed:foodController.isButtonEnable.value? () {
-                        foodController.isButtonEnable.value=false;
-                        var saleNumber = getSaleNumberByTableID();
-                        if (saleNumber == '') {
-                          saleNumber = _createSaleNumber();
-                        }
-                         _addSaleDetail(saleNumber);
-                        var sale = getTempSaleByTableID();
-                        if (sale.saleNumber == '') {
-                          _addTempSale(saleNumber);
-                        } else {
-                          _updateTempSale(sale);
-                        }
-                        PrintSaleItem.printInvoice(foodName: _food.foodName, tableName: tableController.table.value.tableName);
-                        // sale.saleNumber==''?_addTempSale(saleNumber,_food.foodPrice, 0, 0):_updateTempSale(sale);
-                        Future.delayed(const Duration(milliseconds: 350),()=>foodController.isButtonEnable.value=true);
-                        
-                      }:null,
+                    )*/
+                  TextButton(
+                    style: TextButton.styleFrom(backgroundColor: dark),
+                    child: const Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: CustomText(
+                        text: 'ກົດສັ່ງ',
+                        color: Colors.white,
+                        size: 18,
+                      ),
                     ),
-                  
+                    onPressed: foodController.isButtonEnable.value
+                        ? () {
+                            foodController.isButtonEnable.value = false;
+                            var saleNumber = getSaleNumberByTableID();
+                            if (saleNumber == '') {
+                              saleNumber = _createSaleNumber();
+                            }
+                            _addSaleDetail(saleNumber);
+                            var sale = getTempSaleByTableID();
+                            if (sale.saleNumber == '') {
+                              _addTempSale(saleNumber);
+                            } else {
+                              _updateTempSale(sale);
+                            }
+                            if (_food.categoryId != 1) {
+                              String result= PrintSaleItem.printInvoice(
+                                  foodName: _food.foodName,
+                                  tableName:
+                                      tableController.table.value.tableName);
+                              // sale.saleNumber==''?_addTempSale(saleNumber,_food.foodPrice, 0, 0):_updateTempSale(sale);
+                              // Get.defaultDialog(
+                              //   barrierDismissible: true,
+                              //   title: result,
+                              // );
+                            }
+                            Future.delayed(
+                                const Duration(milliseconds: 350),
+                                () =>
+                                    foodController.isButtonEnable.value = true);
+                          }
+                        : null,
+                  ),
                 ],
               ),
             )

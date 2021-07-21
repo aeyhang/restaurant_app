@@ -66,8 +66,8 @@ class TableListScreen extends StatelessWidget {
       child: Container(
         child: Row(
           children: [
-            CustomText(text: '+ ', size: 45, color: dark),
-            CustomText(text: 'ເພີ່ມອາຫານ', size: 35, color: dark),
+            const CustomText(text: '+ ', size: 45, color: dark),
+            const CustomText(text: 'ເພີ່ມອາຫານ', size: 35, color: dark),
             const SizedBox(
               width: 20,
             )
@@ -95,12 +95,12 @@ class TableListScreen extends StatelessWidget {
                       child: Container(
                         child: Row(
                           children: [
-                            CustomText(
+                            const CustomText(
                               text: '+',
                               size: 45,
                               color: dark,
                             ),
-                            CustomText(
+                            const CustomText(
                               text: ' ເພີ່ມໂຕະ',
                               size: 35,
                               color: dark,
@@ -115,7 +115,7 @@ class TableListScreen extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height - 200,
                   child: _buildTableGridViewList(),

@@ -8,7 +8,7 @@ import 'package:restaurant_app/widgets/custom_text.dart';
 
 class FoodListItem extends StatelessWidget {
   final Food food;
-  FoodListItem({required this.food});
+  const FoodListItem({required this.food});
   @override
   Widget build(BuildContext context) {
     final unit =
@@ -23,7 +23,7 @@ class FoodListItem extends StatelessWidget {
               radius: 50,
               backgroundColor: light,
               child: Padding(
-                padding: EdgeInsets.all(5),
+                padding: const EdgeInsets.all(5),
                 child: FittedBox(
                   child: CustomText(text: formatNumber(food.foodPrice)),
                 ),
@@ -44,7 +44,7 @@ class FoodListItem extends StatelessWidget {
                   foodController.food.value=food;
                   showFoodDialog();
                 },
-                icon: Icon(Icons.edit),
+                icon: const Icon(Icons.edit),
                 iconSize: 22,
                 color: dark,
               ),

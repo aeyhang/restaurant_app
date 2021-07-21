@@ -156,7 +156,7 @@ class OrderScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextButton(
-                child: CustomText(
+                child: const CustomText(
                   text: 'ປ່ຽນໂຕະ / ຍ້າຍໂຕະ',
                   color: dark,
                   size: 18,

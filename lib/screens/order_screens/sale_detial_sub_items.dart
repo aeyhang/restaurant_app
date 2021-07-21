@@ -51,7 +51,7 @@ void _showConfirmDialog(BuildContext context, int id,String foodName) {
                         children: [
                           Row(
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 width: 20,
                               ),
                               CustomText(
